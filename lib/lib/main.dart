@@ -18,10 +18,10 @@ class Splashlogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 7,
+      seconds: 5,
       navigateAfterSeconds: new Home(),
       backgroundColor: Color(0xFFF5F5F5),
-      image: new Image.network('images/oaddlogosplash-01.png'),
+      image: new Image.asset('images/oaddlogosplash-01.png'),
       photoSize: 100.0,
       loaderColor: Colors.orange,
     );
