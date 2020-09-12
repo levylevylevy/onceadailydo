@@ -1,3 +1,4 @@
+import 'package:HopHacks/screens/AchievementListScreen.dart';
 import 'package:HopHacks/screens/ActivitySuggestionScreen.dart';
 import 'package:HopHacks/screens/NewUserFormScreen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class OnceADailyDo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTextStyle(
-        child: ActivitySuggestionScreen(),
+        child: AchievementListScreen(),
         style: GoogleFonts.poppins(),
       ),
     );
