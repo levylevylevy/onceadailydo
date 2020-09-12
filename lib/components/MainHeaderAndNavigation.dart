@@ -26,24 +26,24 @@ class MainHeaderAndNavigation extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: IconButton(
-                icon: Icon(Icons.home),
+              child: FlatButton(
+                child: Icon(Icons.home),
                 onPressed: () {
                   // Does nothing because we're already on the home page
                 },
               ),
             ),
             Expanded(
-              child: IconButton(
-                icon: Icon(Icons.calendar_today),
+              child: FlatButton(
+                child: Icon(Icons.calendar_today),
                 onPressed: () {
                   // Does nothing currently but will take the user to the streak page
                 },
               ),
             ),
             Expanded(
-              child: IconButton(
-                icon: Icon(Icons.stars),
+              child: FlatButton(
+                child: Icon(Icons.stars),
                 onPressed: () {
                   // Does nothing currently but will take users to the achievements page
                 },
