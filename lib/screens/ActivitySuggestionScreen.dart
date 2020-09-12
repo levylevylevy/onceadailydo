@@ -43,7 +43,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 2.0,
-                          color: Colors.black,
+                          color: Color(0xFF566575),
                         ),
                       ),
                     ),
