@@ -3,3 +3,4 @@ android
 .idea
 .dart_tool
 .DS_Store
+build
