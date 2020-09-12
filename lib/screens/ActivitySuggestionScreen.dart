@@ -1,47 +1,14 @@
+import 'package:HopHacks/components/MainHeaderAndNavigation.dart';
 import 'package:flutter/material.dart';
 
+/// The screen where a user will be prompted with activities and can mark whether the activity has
+/// been completed.
 class ActivitySuggestionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'TODO: Logo here',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-      ),
-      backgroundColor: Color(0xFF566575),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        child: Row(
-          children: [
-            Expanded(
-              child: IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  // Does nothing because we're already on the home page
-                },
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                icon: Icon(Icons.calendar_today),
-                onPressed: () {
-                  // Does nothing currently but will take the user to the streak page
-                },
-              ),
-            ),
-            Expanded(
-              child: IconButton(
-                icon: Icon(Icons.stars),
-                onPressed: () {
-                  // Does nothing currently but will take users to the achievements page
-                },
-              ),
-            ),
-          ],
-        ),
+    return MainHeaderAndNavigation(
+      child: Container(
+        // TODO: fill in
       ),
     );
   }
