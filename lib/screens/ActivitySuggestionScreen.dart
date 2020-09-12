@@ -1,4 +1,7 @@
 import 'package:HopHacks/components/MainHeaderAndNavigation.dart';
+import 'package:HopHacks/components/activities/ArtsAndCrafts.dart';
+import 'package:HopHacks/components/activities/MovieRecommendation.dart';
+import 'package:HopHacks/components/activities/SongRecommendation.dart';
 import 'package:flutter/material.dart';
 
 /// The screen where a user will be prompted with activities and can mark whether the activity has
@@ -10,7 +13,20 @@ class ActivitySuggestionScreen extends StatefulWidget {
 }
 
 class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
-  Widget currentActivitySuggestion = Container(
+  Widget exampleSongRec = SongRecommendation(
+    'Stack it up',
+    'Liam Payne',
+    'https://www.example.com/20FxLQ20X',
+  );
+  Widget exampleMovieRec = MovieRecommendation(
+    'Parasite',
+    'https://www.example.com/20FxLQ20X',
+  );
+  Widget exampleArtsAndCraftsRec = ArtsAndCrafts(
+    'Try this Bob Ross painting tutorial!',
+    'https://www.example.com/20FxLQ20X',
+  );
+  Widget exampleGenericActivity = Container(
     child: Text('This is an example activity card'),
   );
 
@@ -39,7 +55,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Container(
-                      child: currentActivitySuggestion,
+                      child: exampleSongRec,
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 2.0,
