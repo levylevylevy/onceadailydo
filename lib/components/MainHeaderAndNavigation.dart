@@ -19,6 +19,9 @@ class MainHeaderAndNavigation extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black
+        ),
       ),
       backgroundColor: Color(0xFF566575),
       bottomNavigationBar: Container(
@@ -29,7 +32,7 @@ class MainHeaderAndNavigation extends StatelessWidget {
               child: FlatButton(
                 child: Icon(Icons.home),
                 onPressed: () {
-                  // Does nothing because we're already on the home page
+                  Navigator.pushNamed(context, '/suggestions');
                 },
               ),
             ),
@@ -45,7 +48,7 @@ class MainHeaderAndNavigation extends StatelessWidget {
               child: FlatButton(
                 child: Icon(Icons.stars),
                 onPressed: () {
-                  // Does nothing currently but will take users to the achievements page
+                  Navigator.pushNamed(context, '/achievements');
                 },
               ),
             ),

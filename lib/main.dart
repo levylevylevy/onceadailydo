@@ -13,10 +13,12 @@ class OnceADailyDo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTextStyle(
-        child: AchievementListScreen(),
-        style: GoogleFonts.poppins(),
-      ),
+      initialRoute: '/suggestions',
+      routes: {
+        '/': (context) => NewUserFormScreen(),
+        '/suggestions': (context) => ActivitySuggestionScreen(),
+        '/achievements': (context) => AchievementListScreen(),
+      }
     );
   }
 }
