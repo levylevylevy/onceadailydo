@@ -14,8 +14,35 @@ class NewUserFormScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          survey,
-          RaisedButton(child: Text('Complete Survey'), onPressed: () => this._submitForm(),)
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: survey,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(35.0)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+            ),
+          ),
+          RaisedButton(
+            child: Text('Complete Survey'),
+            onPressed: () => this._submitForm(),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: BorderSide(color: Color(0x52606F)),
+            ),
+          ),
         ],
       ),
     );

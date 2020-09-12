@@ -28,14 +28,18 @@ class UserFormItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(_label),
-        TextFormField(
-          validator: validator,
-          onChanged: this._onChange,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(_label),
+          TextFormField(
+            validator: validator,
+            onChanged: this._onChange,
+          ),
+        ],
+      ),
     );
   }
 }
