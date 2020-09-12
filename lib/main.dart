@@ -1,3 +1,4 @@
+import 'package:HopHacks/screens/ActivitySuggestionScreen.dart';
 import 'package:HopHacks/screens/NewUserFormScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +13,7 @@ class OnceADailyDo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTextStyle(
-        child: NewUserFormScreen(),
+        child: ActivitySuggestionScreen(),
         style: GoogleFonts.poppins(),
       ),
     );

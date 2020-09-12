@@ -40,7 +40,7 @@ class NewUserFormScreen extends StatelessWidget {
             onPressed: () => this._submitForm(),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
-              side: BorderSide(color: Color(0x52606F)),
+              side: BorderSide(color: Color(0xFF52606F)),
             ),
           ),
         ],
