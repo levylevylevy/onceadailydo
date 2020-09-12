@@ -17,7 +17,7 @@ class AchievementListScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  AchievementCard('title', 'description of the award'),
+                  AchievementCard('title', 'description of the award', ActivityType.PHYSICAL),
                 ],
               ),
             ),
@@ -56,9 +56,31 @@ class StatusBar extends StatelessWidget {
 class AchievementCard extends StatelessWidget {
   final String title;
   final String description;
+  final ActivityType activityType;
 
   /// Constructs an achievment card with a given title and description.
-  AchievementCard(this.title, this.description);
+  AchievementCard(this.title, this.description, this.activityType);
+
+  /// Finds the corresponding icon path for the activity type that will be displayed with the
+  /// achievement.
+  String findImageByActivityType(ActivityType type) {
+    switch (type) {
+      case ActivityType.ADVENTURE:
+        return 'assets/images/oaadbadgeadventure-01.png';
+      case ActivityType.ARTSY:
+        return 'assets/images/oaadbadgeartsy-01.png';
+      case ActivityType.COOKING:
+        return 'assets/images/oaadbadgechef-01.png';
+      case ActivityType.KINDNESS:
+        return 'assets/images/oaadbadgekind-01.png';
+      case ActivityType.MENTAL:
+        return 'assets/images/oaddbadgeeinstein-01.png';
+      case ActivityType.PHYSICAL:
+        return 'assets/images/oaddbadgelift-01.png';
+      default:
+        return 'assets/images/oaddbadgelift-01.png';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +89,11 @@ class AchievementCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.timelapse),
+          Image.asset(
+            this.findImageByActivityType(this.activityType),
+            height: 75,
+            width: 75,
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -80,3 +106,6 @@ class AchievementCard extends StatelessWidget {
     );
   }
 }
+
+/// The activity types that can be represented in an activity
+enum ActivityType { ADVENTURE, ARTSY, COOKING, KINDNESS, MENTAL, PHYSICAL }
