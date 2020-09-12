@@ -8,6 +8,7 @@ class AchievementListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainHeaderAndNavigation(
+      title: 'Achievements',
       child: Container(
         color: Color(0xFFEFBC9D),
         child: Column(

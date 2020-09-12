@@ -1,27 +1,38 @@
 import 'package:flutter/material.dart';
 
 /// A widget that wraps screens, adding a header with our logo and a footer with navigational
-/// buttons. 
+/// buttons.
 class MainHeaderAndNavigation extends StatelessWidget {
   Widget child;
+  String title;
 
   /// Constructs a MainHeaderAndNavigation with the given child that will be placed between the
   /// header and navigational footer.
-  MainHeaderAndNavigation({this.child});
+  MainHeaderAndNavigation({this.title = "Once a Daily Do", this.child});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: this.child,
       appBar: AppBar(
-        title: Text(
-          'TODO: Logo here',
-          style: TextStyle(color: Colors.black),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/oaddlogosurvey-01.png',
+              width: 75,
+              height: 75,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0),
+              child: Text(
+                this.title,
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ],
         ),
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-          color: Colors.black
-        ),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       backgroundColor: Color(0xFF566575),
       bottomNavigationBar: Container(

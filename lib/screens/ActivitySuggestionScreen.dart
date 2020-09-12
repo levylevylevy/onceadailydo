@@ -35,6 +35,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
   @override
   Widget build(BuildContext context) {
     return MainHeaderAndNavigation(
+      title: 'Your Daily Activity',
       child: Container(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
