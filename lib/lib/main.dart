@@ -22,7 +22,7 @@ class Splashlogo extends StatelessWidget {
       navigateAfterSeconds: new Home(),
       backgroundColor: Color(0xFFF5F5F5),
       image: new Image.asset('images/oaddlogosplash-01.png'),
-      photoSize: 100.0,
+      photoSize: 75.0,
       loaderColor: Colors.orange,
     );
   }
