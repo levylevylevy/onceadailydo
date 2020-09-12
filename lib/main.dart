@@ -1,22 +1,36 @@
-import 'package:HopHacks/screens/AchievementListScreen.dart';
-import 'package:HopHacks/screens/ActivitySuggestionScreen.dart';
-import 'package:HopHacks/screens/NewUserFormScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import 'package:splashscreen/splashscreen.dart';
 void main() {
-  runApp(OnceADailyDo());
+  runApp(MyApp());
 }
 
-/// The main class for this app.
-class OnceADailyDo extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTextStyle(
-        child: AchievementListScreen(),
-        style: GoogleFonts.poppins(),
-      ),
+
+      home: Splashlogo(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
+class Splashlogo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+      seconds: 7,
+      navigateAfterSeconds: new Home(),
+      backgroundColor: Color(0xFFF5F5F5),
+      image: new Image.network('images/oaddlogosplash-01.png'),
+      photoSize: 100.0,
+      loaderColor: Colors.orange,
+    );
+  }
+}
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
+
