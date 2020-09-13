@@ -38,6 +38,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
   Widget currActivityWidget;
   bool hasCompletedActivity = false;
   String name = 'Garrett';
+  Activity activity;
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +102,12 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
                             // TODO: here I need to submit it to the async storage or remove it
                             // depending on the new boolean value. Give a unique id to the activity
                             // as the key.
+
+                            if (newVal) {
+                              this.activity.persistIntoLocalStorage();
+                            } else {
+                              this.activity.removeFromLocalStorage();
+                            }
                           });
                         },
                       ),
@@ -133,5 +140,6 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
       currActivity.title,
       currActivity.description,
     );
+    this.activity = currActivity;
   }
 }

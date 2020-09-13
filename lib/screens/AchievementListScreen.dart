@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 /// Screen that displays all of a user's achivements with achievement cards describing each.
 class AchievementListScreen extends StatelessWidget {
-  final int numBadges = 5;
+  final int numBadges = 6;
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +12,45 @@ class AchievementListScreen extends StatelessWidget {
       child: Container(
         color: Color(0xFFEFBC9D),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             StatusBar(numBadges),
             Expanded(
               child: ListView(
                 children: [
-                  AchievementCard('title', 'description of the award', ActivityType.PHYSICAL),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: AchievementCard(
+                          'Do You Even Lift?',
+                          'Completed 5 physical activites',
+                          ActivityType.PHYSICAL)),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: AchievementCard(
+                          'Einstein Award',
+                          'Completed 5 big 🧠 activities',
+                          ActivityType.MENTAL)),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: AchievementCard(
+                          'Artsy Artist',
+                          'Completed 5 arts or crafts activities',
+                          ActivityType.ARTSY)),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: AchievementCard('Master Chef',
+                          'Tried five new recipes 😋', ActivityType.COOKING)),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: AchievementCard(
+                          'Adventurer',
+                          'Completed 5 outdoors activities',
+                          ActivityType.ADVENTURE)),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: AchievementCard(
+                          'Certificate of Kindness ',
+                          'Completed five activities to help your community or friends. What a great person!',
+                          ActivityType.KINDNESS)),
                 ],
               ),
             ),
@@ -85,24 +117,34 @@ class AchievementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            this.findImageByActivityType(this.activityType),
-            height: 75,
-            width: 75,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(this.title, style: TextStyle(fontWeight: FontWeight.bold)),
-              Text(this.description),
-            ],
-          ),
-        ],
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Image.asset(
+                this.findImageByActivityType(this.activityType),
+                height: 75,
+                width: 75,
+              ),
+            ),
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    this.title,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(this.description),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
