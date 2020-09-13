@@ -24,7 +24,7 @@ class _StreaksScreenState extends State<StreaksScreen> {
       title: 'Activity Streaks',
       child: Container(
         child: Center(
-          child: Column(
+          child: ListView(
             children: <Widget>[
               Container(
                 color: Color(0xFF797983),
@@ -54,32 +54,22 @@ class _StreaksScreenState extends State<StreaksScreen> {
                   ),
                 ),
               ),
-              Expanded(
-                child: new Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      TableCalendar(
-                        initialCalendarFormat: CalendarFormat.month,
-                        calendarStyle: CalendarStyle(
-                          todayColor: Color(0xFF566575),
-                          selectedColor: Colors.orange,
-                        ),
-                        headerStyle: HeaderStyle(
-                          centerHeaderTitle: true,
-                          formatButtonDecoration: BoxDecoration(
-                            color: Color(0xff797983),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          formatButtonTextStyle: TextStyle(color: Colors.white),
-                          formatButtonShowsNext: false,
-                        ),
-                        calendarController: _control,
-                      )
-                    ],
-                  ),
+              TableCalendar(
+                initialCalendarFormat: CalendarFormat.month,
+                calendarStyle: CalendarStyle(
+                  todayColor: Color(0xFF566575),
+                  selectedColor: Colors.orange,
                 ),
+                headerStyle: HeaderStyle(
+                  centerHeaderTitle: true,
+                  formatButtonDecoration: BoxDecoration(
+                    color: Color(0xff797983),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  formatButtonTextStyle: TextStyle(color: Colors.white),
+                  formatButtonShowsNext: false,
+                ),
+                calendarController: _control,
               )
             ],
           ),
