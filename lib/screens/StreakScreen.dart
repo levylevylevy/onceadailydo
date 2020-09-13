@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:HopHacks/components/MainHeaderAndNavigation.dart';
+import 'package:HopHacks/models/Activity.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 /// The screen that displays information about how long and when a user has completed activities.
@@ -11,11 +15,37 @@ class StreaksScreen extends StatefulWidget {
 
 class _StreaksScreenState extends State<StreaksScreen> {
   CalendarController _control;
+  Map<DateTime, List<dynamic>> _events;
+  List _selectedEvents;
+  List todaysEvents;
+
+  void _loadFromLocalStorage() async {
+    var pref = await SharedPreferences.getInstance();
+    DateTime now = DateTime.now();
+    String eventToday = pref.getString(DateTime(now.year, now.month, now.day).toString());
+    this.todaysEvents.add(Activity.fromJson(json.decode(eventToday)).title);
+
+    print(eventToday);
+  }
 
   @override
   void initState() {
     super.initState();
     _control = CalendarController();
+    this._selectedEvents = [];
+    var _selectedDay = DateTime.now();
+    this._events = {
+      _selectedDay.subtract(Duration(days: 30)): ['Cleaning Up the Park'],
+      _selectedDay.subtract(Duration(days: 27)): ['Volunteering at the Community Center'],
+      _selectedDay.subtract(Duration(days: 20)): ['Hiking!'],
+      _selectedDay.subtract(Duration(days: 16)): ['Baking Sourdough!'],
+      _selectedDay.subtract(Duration(days: 10)): ['Bob Ross Tutorial'],
+      _selectedDay.subtract(Duration(days: 4)): ['Mind Puzzle'],
+      _selectedDay.subtract(Duration(days: 2)): ['Upbeat Music Playlist'],
+      _selectedDay: []
+    };
+    this.todaysEvents = this._events[_selectedDay];
+    _loadFromLocalStorage();
   }
 
   @override
@@ -55,15 +85,31 @@ class _StreaksScreenState extends State<StreaksScreen> {
                 ),
               ),
               TableCalendar(
-                daysOfWeekStyle: DaysOfWeekStyle(weekdayStyle: TextStyle(color: Colors.white,), weekendStyle: TextStyle(color: Colors.white,),),
+                daysOfWeekStyle: DaysOfWeekStyle(
+                  weekdayStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                  weekendStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
                 initialCalendarFormat: CalendarFormat.month,
-                
+                events: _events,
                 calendarStyle: CalendarStyle(
                   selectedColor: Colors.orange,
-                  weekdayStyle: TextStyle(color: Colors.white,), 
-                  weekendStyle: TextStyle(color: Colors.white,),
-                  unavailableStyle: TextStyle(color: Colors.white,),
-                  outsideWeekendStyle: TextStyle(color: Color(0xFF9E9E9E),),
+                  weekdayStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                  weekendStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                  unavailableStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                  outsideWeekendStyle: TextStyle(
+                    color: Color(0xFF9E9E9E),
+                  ),
+                  markersColor: Colors.white,
                 ),
                 headerStyle: HeaderStyle(
                   centerHeaderTitle: true,
@@ -75,7 +121,27 @@ class _StreaksScreenState extends State<StreaksScreen> {
                   formatButtonShowsNext: false,
                 ),
                 calendarController: _control,
-              )
+                onDaySelected: (day, events) {
+                  setState(() {
+                    _selectedEvents = events;
+                    print(_selectedEvents);
+                  });
+                },
+              ),
+              for (dynamic event in _selectedEvents)
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(width: 0.8),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                  child: ListTile(
+                    title: Text(event.toString()),
+                    onTap: () => print('$event tapped!'),
+                  ),
+                )
             ],
           ),
         ),

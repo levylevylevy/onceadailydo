@@ -22,14 +22,16 @@ class Activity {
   /// Returns a json string representation of this Activity. This is the same representation that
   /// comes from the server.
   String toJson() {
-    return '{"activityId": $id, "title": $title, "text": $description}';
+    return '{"activityId": $id, "title": "$title", "text": "$description"}';
   }
 
   /// Persists this activity in key-value pair form into local memory via the SharedPreferences
   /// library 
   void persistIntoLocalStorage() async {
+    DateTime now = DateTime.now();
+
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString(this.id.toString(), this.toJson());
+    pref.setString(DateTime(now.year, now.month, now.day).toString(), this.toJson());
   }
 
   /// Removes this activity from the local storage.

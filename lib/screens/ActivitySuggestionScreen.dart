@@ -4,7 +4,6 @@ import 'package:HopHacks/components/activities/GenericRecommendation.dart';
 import 'package:HopHacks/components/activities/MovieRecommendation.dart';
 import 'package:HopHacks/components/activities/SongRecommendation.dart';
 import 'package:HopHacks/models/Activity.dart';
-import 'package:HopHacks/models/ActivityManager.dart';
 import 'package:HopHacks/models/MockActivityManager.dart';
 import 'package:flutter/material.dart';
 import 'package:loader/loader.dart';
