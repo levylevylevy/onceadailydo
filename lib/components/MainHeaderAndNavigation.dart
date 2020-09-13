@@ -56,7 +56,7 @@ class MainHeaderAndNavigation extends StatelessWidget {
               child: FlatButton(
                 child: Icon(Icons.calendar_today),
                 onPressed: () {
-                  // Does nothing currently but will take the user to the streak page
+                  Navigator.pushNamed(context, '/streaks');
                 },
               ),
             ),
