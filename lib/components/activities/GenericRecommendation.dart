@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 /// A arts and crafts recommendation informational widget
 class GenericRecommendation extends StatelessWidget {
@@ -11,22 +10,6 @@ class GenericRecommendation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(this.title, style: TextStyle(fontWeight: FontWeight.bold)),
-          Linkify(
-            text: this.description,
-            onOpen: (link) async {
-              if (await canLaunch(link.url)) {
-                await launch(link.url);
-              }
-            },
-          ),
-        ],
-      ),
-    );
+    return Markdown(data: '## $title\n\n$description');
   }
 }

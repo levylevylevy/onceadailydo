@@ -57,8 +57,8 @@ class _StreaksScreenState extends State<StreaksScreen> {
               TableCalendar(
                 daysOfWeekStyle: DaysOfWeekStyle(weekdayStyle: TextStyle(color: Colors.white,), weekendStyle: TextStyle(color: Colors.white,),),
                 initialCalendarFormat: CalendarFormat.month,
+                
                 calendarStyle: CalendarStyle(
-                  todayColor: Color(0xFF566575),
                   selectedColor: Colors.orange,
                   weekdayStyle: TextStyle(color: Colors.white,), 
                   weekendStyle: TextStyle(color: Colors.white,),

@@ -99,10 +99,6 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
                           setState(() {
                             this.hasCompletedActivity = newVal;
 
-                            // TODO: here I need to submit it to the async storage or remove it
-                            // depending on the new boolean value. Give a unique id to the activity
-                            // as the key.
-
                             if (newVal) {
                               this.activity.persistIntoLocalStorage();
                             } else {

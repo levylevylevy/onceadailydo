@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_markdown: ^0.4.4
   table_calendar: ^2.2.3
   splashscreen: ^1.2.0
   shared_preferences: ^0.5.10
