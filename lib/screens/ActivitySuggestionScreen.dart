@@ -1,5 +1,6 @@
 import 'package:HopHacks/components/MainHeaderAndNavigation.dart';
 import 'package:HopHacks/components/activities/ArtsAndCrafts.dart';
+import 'package:HopHacks/components/activities/GenericRecommendation.dart';
 import 'package:HopHacks/components/activities/MovieRecommendation.dart';
 import 'package:HopHacks/components/activities/SongRecommendation.dart';
 import 'package:HopHacks/models/Activity.dart';
@@ -36,6 +37,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
   );
   Widget currActivityWidget;
   bool hasCompletedActivity = false;
+  String name = 'Garrett';
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text(
-                  'Welcome back, [NAME]',
+                  'Welcome back, $name',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -61,6 +63,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Container(
+                      padding: EdgeInsets.all(10.0),
                       child: loading
                           ? CircularProgressIndicator()
                           : currActivityWidget,
@@ -126,10 +129,9 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
     MockActivityManager manager = MockActivityManager();
     await manager.loadActivitiesFromServer();
     Activity currActivity = manager.activities[0];
-    this.currActivityWidget = SongRecommendation(
+    this.currActivityWidget = GenericRecommendation(
       currActivity.title,
       currActivity.description,
-      '(currently no url data is included in json)',
     );
   }
 }

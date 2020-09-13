@@ -11,7 +11,10 @@ class MockActivityManager {
   Future<void> loadActivitiesFromServer() async {
     this.activities.add(
           Activity.fromJson(
-              json.decode('{"activityId": 1, "title": "Example title", "text": "Example description"}')),
+            json.decode(
+              '{"activityId": 1, "title": "Stack It Up", "text": "We think you\'d love the song Stack It Up by Liam Payne. Give it a listen at https://www.example.com/20FxLQ20X"}',
+            ),
+          ),
         );
   }
 }

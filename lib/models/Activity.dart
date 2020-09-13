@@ -16,4 +16,15 @@ class Activity {
     this.title = json['title'];
     this.description = json['text'];
   }
+
+  /// Persists this activity in key-value pair form into local memory via the SharedPreferences
+  /// library 
+  void persistIntoLocalStorage() {
+
+  }
+
+  /// Removes this activity from the local storage.
+  void removeFromLocalStorage() {
+    
+  }
 }

@@ -15,10 +15,18 @@ class UserSurvey extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Welcome,'),
-        Text('New User'),
+        Text(
+          'New User',
+          style: TextStyle(
+            color: Color(0xFFFCA26E),
+            fontWeight: FontWeight.bold,
+            fontSize: 40.0,
+          ),
+        ),
         Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               UserFormItem(
                 'Name',
@@ -31,6 +39,8 @@ class UserSurvey extends StatelessWidget {
                 (String newVal) {
                   // Do nothing for now. Eventually this will probably be a dropdown or something
                 },
+                type: InputTypes.DROPDOWN,
+                dropdownItems: ['Vegan', 'Lactose Intolerant'],
               ),
               UserFormItem(
                 'Do you prefer more intensive physical activities or intensive mind' +
@@ -38,6 +48,8 @@ class UserSurvey extends StatelessWidget {
                 (String newVal) {
                   // Do nothing for now. Eventually this will probably be a dropdown or something
                 },
+                type: InputTypes.DROPDOWN,
+                dropdownItems: ['Physical', 'Mental'],
               ),
             ],
           ),

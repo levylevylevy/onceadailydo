@@ -13,7 +13,7 @@ class OnceADailyDo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/suggestions',
+      initialRoute: '/',
       routes: {
         '/': (context) => NewUserFormScreen(),
         '/suggestions': (context) => ActivitySuggestionScreen(),

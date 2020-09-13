@@ -1,3 +1,4 @@
+import 'package:HopHacks/components/MainHeaderAndNavigation.dart';
 import 'package:HopHacks/components/UserSurvey.dart';
 import 'package:flutter/material.dart';
 
@@ -8,42 +9,46 @@ class NewUserFormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('TODO: logo here'),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: survey,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(35.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
+    return MainHeaderAndNavigation(
+      displayFooter: false,
+      child: Container(
+        color: Color(0xFFEFBC9D),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Container(
+                alignment: Alignment(0, 55),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: survey,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(35.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          RaisedButton(
-            child: Text('Complete Survey'),
-            onPressed: () => this._submitForm(),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: BorderSide(color: Color(0xFF52606F)),
+            RaisedButton(
+              color: Color(0xFF52606F),
+              child: Text('Complete Survey', style: TextStyle(color: Colors.white)),
+              onPressed: () {
+                this._submitForm();
+                Navigator.pushNamed(context, '/suggestions');
+              },
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
