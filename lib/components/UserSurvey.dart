@@ -40,7 +40,7 @@ class UserSurvey extends StatelessWidget {
                   // Do nothing for now. Eventually this will probably be a dropdown or something
                 },
                 type: InputTypes.DROPDOWN,
-                dropdownItems: ['Vegan', 'Lactose Intolerant'],
+                dropdownItems: ['Vegan', 'Vegetarian', 'Pescetarian', 'Halal', 'Kosher', 'Nut allergies', 'Gluten free', 'Lactose intolerant', 'Soybean Allergy'],
               ),
               UserFormItem(
                 'Do you prefer more intensive physical activities or intensive mind' +
