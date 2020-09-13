@@ -4,6 +4,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_circular_text/circular_text.dart';
 import 'package:flutter_circular_text/circular_text/model.dart';
 import 'package:flutter_circular_text/circular_text/widget.dart';
+import 'dart:math';
+
 
 void main() => runApp(StreaksScreen());
 
@@ -39,65 +41,67 @@ class _HomePageState extends State<HomePage> {
         child: Container(
             child: Center(
                 child: Column(
-          children: <Widget>[
-            Container(
-
-              color: Color(0xFF797983),
-              height: 184,
-              width: 600,
-              child: new Text(
-                'current streak:',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Color(0xFFF5F5F5),
-                ),
-
-              ),
-              alignment: AlignmentDirectional(0.0,-0.8),
-
-            ),
-            Container(
-              color: Color(0xFF566575),
-              height: 40,
-              width: 600,
-              child: new Text(
-                "My Calendar",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Color(0xFFF5F5F5),
-                ),
-              ),
-              alignment: AlignmentDirectional(0.0, 0.0),
-            ),
-            Expanded(
-              child: new Align(
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    TableCalendar(
-                      initialCalendarFormat: CalendarFormat.month,
-                      calendarStyle: CalendarStyle(
-                        todayColor: Color(0xFF566575),
-                        selectedColor: Colors.orange,
-                      ),
-                      headerStyle: HeaderStyle(
-                        centerHeaderTitle: true,
-                        formatButtonDecoration: BoxDecoration(
-                          color: Color(0xff797983),
-                          borderRadius: BorderRadius.circular(20.0),
+
+
+
+                    Container(
+
+                      color: Color(0xFF797983),
+                      height: 184,
+                      width: 600,
+                      child: new Text(
+                        'current streak:',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Color(0xFFF5F5F5),
                         ),
-                        formatButtonTextStyle: TextStyle(color: Colors.white),
-                        formatButtonShowsNext: false,
+
                       ),
-                      calendarController: _control,
+                      alignment: AlignmentDirectional(0.0,-0.8),
+
+                    ),
+                    Container(
+                      color: Color(0xFF566575),
+                      height: 40,
+                      width: 600,
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: new Text(
+                        "My Calendar",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Color(0xFFF5F5F5),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: new Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            TableCalendar(
+                              initialCalendarFormat: CalendarFormat.month,
+                              calendarStyle: CalendarStyle(
+                                todayColor: Color(0xFF566575),
+                                selectedColor: Colors.orange,
+                              ),
+                              headerStyle: HeaderStyle(
+                                centerHeaderTitle: true,
+                                formatButtonDecoration: BoxDecoration(
+                                  color: Color(0xff797983),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                formatButtonTextStyle: TextStyle(color: Colors.white),
+                                formatButtonShowsNext: false,
+                              ),
+                              calendarController: _control,
+                            )
+                          ],
+                        ),
+                      ),
                     )
                   ],
-                ),
-              ),
-            )
-          ],
-        ))));
+                ))));
   }
 }
-
