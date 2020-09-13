@@ -2,7 +2,11 @@ import 'package:HopHacks/components/MainHeaderAndNavigation.dart';
 import 'package:HopHacks/components/activities/ArtsAndCrafts.dart';
 import 'package:HopHacks/components/activities/MovieRecommendation.dart';
 import 'package:HopHacks/components/activities/SongRecommendation.dart';
+import 'package:HopHacks/models/Activity.dart';
+import 'package:HopHacks/models/ActivityManager.dart';
+import 'package:HopHacks/models/MockActivityManager.dart';
 import 'package:flutter/material.dart';
+import 'package:loader/loader.dart';
 
 /// The screen where a user will be prompted with activities and can mark whether the activity has
 /// been completed.
@@ -12,7 +16,8 @@ class ActivitySuggestionScreen extends StatefulWidget {
       _ActivitySuggestionScreenState();
 }
 
-class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
+class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen>
+    with LoadingMixin<ActivitySuggestionScreen> {
   Widget exampleSongRec = SongRecommendation(
     'Stack it up',
     'Liam Payne',
@@ -29,7 +34,7 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
   Widget exampleGenericActivity = Container(
     child: Text('This is an example activity card'),
   );
-
+  Widget currActivityWidget;
   bool hasCompletedActivity = false;
 
   @override
@@ -56,7 +61,9 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Container(
-                      child: exampleSongRec,
+                      child: loading
+                          ? CircularProgressIndicator()
+                          : currActivityWidget,
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 2.0,
@@ -87,6 +94,10 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
                         onChanged: (newVal) {
                           setState(() {
                             this.hasCompletedActivity = newVal;
+
+                            // TODO: here I need to submit it to the async storage or remove it
+                            // depending on the new boolean value. Give a unique id to the activity
+                            // as the key.
                           });
                         },
                       ),
@@ -105,6 +116,20 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  /// Uses the Loader library to load data without going through the tedious work of using a
+  /// FutureBuilder
+  @override
+  Future<void> load() async {
+    MockActivityManager manager = MockActivityManager();
+    await manager.loadActivitiesFromServer();
+    Activity currActivity = manager.activities[0];
+    this.currActivityWidget = SongRecommendation(
+      currActivity.title,
+      currActivity.description,
+      '(currently no url data is included in json)',
     );
   }
 }
