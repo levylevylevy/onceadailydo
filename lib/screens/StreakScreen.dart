@@ -62,7 +62,7 @@ class _StreaksScreenState extends State<StreaksScreen> {
                 width: 600,
                 child: new Text(
                   'current streak:'
-                  '\n10 days',
+                  '\n1 day',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 40.0,
